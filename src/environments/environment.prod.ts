@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  apiBaseUrl: 'https://assignments-back-2x4k.onrender.com/api',
 };
