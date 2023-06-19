@@ -1,4 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
+import { AuthBdl } from 'src/app/services/bdl/auth.bdl';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-login',
@@ -6,11 +10,31 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit, OnDestroy {
-  constructor() {}
+
+  email = "";
+  password = "";
+  loading = false;
+
+  constructor(private titleService: Title, private authBdl: AuthBdl
+    , private storageService: StorageService, private router: Router) { }
 
   ngOnInit() {
+    this.titleService.setTitle(`Assignments Management | Login`);
+
+    // if(this.storageService.getToken()){
+    //   this.router.navigate(['/dashboard']);
+    // }
   }
+
   ngOnDestroy() {
   }
 
+  onSubmit(event: any) {
+    console.log(`onSubmit email ${this.email} - password ${this.password}`);
+    this.loading = true;
+    if (this.email === "") return;
+    if (this.password === "") return;
+    this.authBdl.login(this.email, this.password);
+    this.loading = false;
+  }
 }

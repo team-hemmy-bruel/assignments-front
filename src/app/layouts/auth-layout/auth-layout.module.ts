@@ -7,6 +7,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { LoginComponent } from '../../pages/login/login.component';
 import { RegisterComponent } from '../../pages/register/register.component';
+import { ProgressBarComponent } from 'src/app/components/progress-bar/progress-bar.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -16,7 +18,8 @@ import { RegisterComponent } from '../../pages/register/register.component';
   ],
   declarations: [
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProgressBarComponent
   ]
 })
 export class AuthLayoutModule { }

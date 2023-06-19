@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-6" >
+  <div class="col-md-6">
     <div class="header bg-gradient-danger py-lg-8 py-2" style="height: 100vh;">
       <div class="container">
         <div class="header-body text-center mb-4">
@@ -9,7 +9,7 @@
               <br>
               <p class="text-lead text-light">We're thrilled that you've chosen to continue with us! Please take a
                 moment to login to your account using the email address and password associated with your profile.
-               </p>
+              </p>
             </div>
           </div>
         </div>
@@ -27,13 +27,13 @@
         <div class="text-center text-muted mb-4">
           <small>Sign in with credentials</small>
         </div>
-        <form role="form">
+        <form role="form" ngForm #loginForm (submit)="onSubmit($event);">
           <div class="form-group mb-3">
             <div class="input-group input-group-alternative">
               <div class="input-group-prepend">
                 <span class="input-group-text"><i class="ni ni-email-83"></i></span>
               </div>
-              <input class="form-control" placeholder="Email" type="email">
+              <input class="form-control" [(ngModel)]="email" name="email" placeholder="Email" type="email">
             </div>
           </div>
           <div class="form-group">
@@ -41,20 +41,25 @@
               <div class="input-group-prepend">
                 <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
               </div>
-              <input class="form-control" placeholder="Password" type="password">
+              <input class="form-control" [(ngModel)]="password" name="password" placeholder="Password" type="password">
             </div>
           </div>
           <div class="text-center">
-            <button type="button" class="btn btn-primary my-4">Sign in</button>
+            <div *ngIf="loading; else content">
+              <app-progress-bar *ngIf="loading"></app-progress-bar>
+            </div>
+            <ng-template #content>
+              <button class="btn btn-primary my-4">Sign in</button>
+            </ng-template>
           </div>
         </form>
       </div>
     </div>
     <div class="row mt-3">
       <div class="col-12">
-        <a [routerLink]="['/register']" class="text-light"><small class="">Not yet an account? Create a new one</small></a>
+        <a [routerLink]="['/register']" class="text-light"><small class="">Not yet an account? Create a new
+            one</small></a>
       </div>
     </div>
   </div>
 </div>
-<!-- Page content -->
