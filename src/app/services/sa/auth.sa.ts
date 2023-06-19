@@ -15,4 +15,9 @@ export class AuthSA {
     return this.apiSA.post('/user/login', { email, mdp: password });
   }
 
+  register(email: string, password:string, username: string, status:string): Observable<any> {
+    return this.apiSA.post('/user/register', { email, mdp: password, nomprenom:username, status });
+  }
+
+
 }

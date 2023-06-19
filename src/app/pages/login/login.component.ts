@@ -30,7 +30,6 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(event: any) {
-    console.log(`onSubmit email ${this.email} - password ${this.password}`);
     this.loading = true;
     if (this.email === "") return;
     if (this.password === "") return;
