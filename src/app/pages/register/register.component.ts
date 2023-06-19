@@ -39,7 +39,7 @@ export class RegisterComponent implements OnInit {
     if (this.username === "") return;
     if (this.status === "") return;
 
-    this.authBdl.register(this.email, this.password, this.password, this.status).subscribe(
+    this.authBdl.register(this.email, this.password, this.username, this.status).subscribe(
       (success) => {
         if (success) {
           // Register was successful
