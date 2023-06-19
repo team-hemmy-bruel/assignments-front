@@ -21,9 +21,9 @@ export class LoginComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.titleService.setTitle(`Assignments Management | Login`);
 
-    // if(this.storageService.getToken()){
-    //   this.router.navigate(['/dashboard']);
-    // }
+    if(this.storageService.getToken()){
+      this.router.navigate(['/dashboard']);
+    }
   }
 
   ngOnDestroy() {
@@ -34,7 +34,24 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.loading = true;
     if (this.email === "") return;
     if (this.password === "") return;
-    this.authBdl.login(this.email, this.password);
-    this.loading = false;
+
+    this.authBdl.login(this.email, this.password).subscribe(
+      (success) => {
+        if (success) {
+          // Login was successful
+          console.log('Login successful');
+        } else {
+          // Login failed
+          console.log('Login failed');
+        }
+
+        this.loading = false; // Hide the loading spinner
+      },
+      (error) => {
+        console.error(error);
+        this.loading = false; // Hide the loading spinner
+      }
+    );
   }
+
 }

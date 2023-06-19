@@ -25,4 +25,12 @@ export class StorageService {
     localStorage.setItem(USER_INFO, JSON.stringify(userInfo));
   }
 
+  removeToken() {
+    localStorage.removeItem(TOKEN);
+  }
+
+  removeUserInfo() {
+    localStorage.removeItem(USER_INFO);
+  }
+
 }
