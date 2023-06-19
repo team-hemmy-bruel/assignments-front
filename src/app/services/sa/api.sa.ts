@@ -14,7 +14,7 @@ export class ApiSA {
   }
 
   getHeaders(): HttpHeaders {
-    const headerToken = this.storageService.getToken() ? { 'x-access-token': this.storageService.getToken() } : {};
+    const headerToken = this.storageService.getToken() ? { 'Authorization': `Bearer ${this.storageService.getToken()}` } : {};
     return new HttpHeaders({
       ...headerToken
     });
