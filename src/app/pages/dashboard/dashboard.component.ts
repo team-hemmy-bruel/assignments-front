@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import Chart from 'chart.js';
+import { Router } from '@angular/router';
 import { AssignmentSA } from 'src/app/services/sa/assignement.sa';
 
 @Component({
@@ -15,8 +15,13 @@ export class DashboardComponent implements OnInit {
   assignments: [];
   loading = false;
 
-  constructor(private assignmentSA: AssignmentSA) {
+  constructor(private assignmentSA: AssignmentSA, private router: Router,
+    ) {
 
+  }
+
+  date(date: string) {
+    return new Date(date).toLocaleDateString();
   }
 
   ngOnInit() {
@@ -40,6 +45,10 @@ export class DashboardComponent implements OnInit {
       this.totalPages = Array(data.totalPages).fill(0).map((x, i) => i + 1);
       this.loading = false;
     });
+  }
+
+  editAssignment(id: string) {
+    this.router.navigate(['/user-profile', {id}]);
   }
 
 }
