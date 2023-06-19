@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserProfileComponent implements OnInit {
 
-  constructor() { }
+  public userInfo: any;
+  public initial: any;
+
+  constructor(private storageService: StorageService) {
+    this.userInfo = this.storageService.getUserInfo();
+    this.initial = `https://ui-avatars.com/api/?name=${this.userInfo.nomprenom}&background=F5583D&color=ffffff`;
+  }
 
   ngOnInit() {
   }
