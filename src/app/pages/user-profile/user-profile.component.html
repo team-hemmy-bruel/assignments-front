@@ -34,27 +34,27 @@
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label" for="input-username">Username</label>
-                    <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username" value="lucky.jesse">
+                    <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username" [value]="userInfo.nomprenom" disabled>
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label" for="input-email">Email address</label>
-                    <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="jesse@example.com">
+                    <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="Email" [value]="userInfo.email" disabled>
                   </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-first-name">First name</label>
-                    <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="First name" value="Lucky">
+                    <label class="form-control-label" for="input-first-name">Status</label>
+                    <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="Status" [value]="userInfo.status" disabled>
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-last-name">Last name</label>
-                    <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Last name" value="Jesse">
+                    <label class="form-control-label" for="input-last-name">Password</label>
+                    <input type="text" id="input-last-name" class="form-control form-control-alternative" type="password" placeholder="Password" [value]="userInfo.mdp" disabled>
                   </div>
                 </div>
               </div>
