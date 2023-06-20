@@ -15,11 +15,8 @@ export class AssignmentAddComponent implements OnInit {
 
 
   nom = "";
-  dateDeRendu = new Date();
-  auteur = "";
   matiere = "";
-  note = 0;
-  remarques = "";
+  matieres = [];
 
   loading = false;
 
@@ -30,22 +27,22 @@ export class AssignmentAddComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getMatieres();
   }
 
-
+  getMatieres() {
+    this.assignmentSA.subjects().subscribe((data) => {
+      this.matieres = data.docs;
+    })
+  }
 
   addAssignment() {
     this.loading = true;
     const assAdd = {
-      auteur: '648b1414d266bf40f84b6bdf',
-      matiere: '648b1576f0c99259a0f34990',
-      nom: 'd',
-      dateRendu: '2022-06-20',
-      note: 2,
-      remarques: 'remarques d'
+      auteur: this.storageService.getUserInfo()._id,
+      matiere: this.matiere,
+      nom: this.nom
     };
-
-    // const etes = {this.nom, this.dateDeRendu, this.auteur, this.matiere, this.note, this.remarques};
 
     this.assignmentSA.addAssignment(assAdd).subscribe(data => {
       console.log('this. data :>> ', data);
@@ -58,11 +55,8 @@ export class AssignmentAddComponent implements OnInit {
 
   onSubmit(event: any) {
     console.log('nom :>> ', this.nom);
-    console.log('dateDeRendu :>> ', this.dateDeRendu);
-    console.log('auteur :>> ', this.auteur);
     console.log('matiere :>> ', this.matiere);
-    console.log('note :>> ', this.note);
-    console.log('remarques :>> ', this.remarques);
+
     this.addAssignment();
   }
 }
