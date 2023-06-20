@@ -1,4 +1,5 @@
-<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 600px; background-image: url(assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
+<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
+  style="min-height: 600px; background-image: url(assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
   <!-- Mask -->
   <span class="mask bg-gradient-danger opacity-8"></span>
   <!-- Header container -->
@@ -21,45 +22,86 @@
             <div class="col-8">
               <h3 class="mb-0">Edit assignment</h3>
             </div>
-            <div class="col-2 text-right">
-              <a href="#!" class="btn btn-sm btn-primary">Update</a>
-            </div>
-            <div class="col-2 text-right">
-              <a href="#!" class="btn btn-sm btn-danger">Delete</a>
+            <div class="col-4 text-right">
+              <a type="button" (click)="deleteAssignment()" class="btn btn-sm btn-danger">Delete</a>
             </div>
           </div>
         </div>
         <div class="card-body">
-          <form>
-            <h6 class="heading-small text-muted mb-4">User information</h6>
+          <h6 class="heading-small text-muted mb-4">Assignment detail : {{assignment.nom}} </h6>
+          <div class="table-responsive">
+            <table class="table align-items-center table-flush">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">Author</th>
+                  <th scope="col">Subject</th>
+                  <th scope="col">State</th>
+                  <th scope="col">Date Due</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">
+                    <div class="media align-items-center">
+                      <a class="avatar rounded-circle mr-3">
+                        <app-initial [username]="author_info.email"></app-initial>
+                      </a>
+                      <div class="media-body">
+                        <span class="mb-0 text-sm">{{author_info.nomprenom}} - {{author_info.email}}</span>
+                      </div>
+                    </div>
+                  </th>
+                  <td>
+                    <div class="media align-items-center">
+                      <a class="avatar rounded-circle mr-3">
+                        <img alt="Image placeholder" [src]="getImage(subject_info.image)" style="height:100%">
+                      </a>
+                      <div class="media-body">
+                        <span class="mb-0 text-sm">{{subject_info.nom}}</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div *ngIf="assignment.rendu; else contentRendu">
+                      <span class="badge badge-pill badge-success">Due</span>
+                    </div>
+                    <ng-template #contentRendu>
+                      <span class="badge badge-pill badge-default">Not due</span>
+                    </ng-template>
+                  </td>
+                  <td>
+                    {{date(assignment.dateDeRendu)}}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <br>
+          <form ngForm #editAssignmentForm (submit)="editAssignment();">
             <div class="pl-lg-4">
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-username">Username</label>
-                    <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username" [value]="userInfo.nomprenom" disabled>
+                    <label class="form-control-label" for="input-Note">Note</label>
+                    <input type="number" max="20" id="input-Note" class="form-control form-control-alternative"
+                      placeholder="Note" [(ngModel)]="note" [value]="note">
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-email">Email address</label>
-                    <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="Email" [value]="userInfo.email" disabled>
+                    <label class="form-control-label" for="input-Comments">Comments</label>
+                    <textarea type="text" id="input-Comments" class="form-control form-control-alternative"
+                      placeholder="Comments" [(ngModel)]="remarques"  [value]="remarques"></textarea>
                   </div>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <label class="form-control-label" for="input-first-name">Status</label>
-                    <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="Status" [value]="userInfo.status" disabled>
-                  </div>
+              <div>
+                <div *ngIf="loading; else content">
+                  <button class="btn btn-primary my-4">Update ...</button>
                 </div>
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <label class="form-control-label" for="input-last-name">Password</label>
-                    <input type="text" id="input-last-name" class="form-control form-control-alternative" type="password" placeholder="Password" [value]="userInfo.mdp" disabled>
-                  </div>
-                </div>
+                <ng-template #content>
+                  <button class="btn btn-primary my-4">Update</button>
+                </ng-template>
               </div>
             </div>
           </form>

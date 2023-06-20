@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   apiBaseUrl: 'https://assignments-back-2x4k.onrender.com/api',
+  apiBaseUrlAssets: 'https://assignments-back-2x4k.onrender.com',
   // apiBaseUrl: 'http://localhost:8010/api',
 };
 

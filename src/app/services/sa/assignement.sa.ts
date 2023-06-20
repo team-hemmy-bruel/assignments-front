@@ -12,7 +12,7 @@ export class AssignmentSA {
   constructor(private apiSA: ApiSA) { }
 
   assignments(page: number, limit: number): Observable<any> {
-    return this.apiSA.get(`/assignments?page=${page}&limit=${limit}`);
+    return this.apiSA.get(`/assignmentslibs/-1?page=${page}&limit=${limit}`);
   }
 
   subjects(): Observable<any> {
@@ -24,12 +24,12 @@ export class AssignmentSA {
   }
 
   detailAssignment(id: string): Observable<any> {
-    return this.apiSA.get(`/assignments/${id}`);
+    return this.apiSA.get(`/assignmentslib/${id}`);
   }
 
-  // editAssignment(id: string): Observable<any> {
-  //   return this.apiSA.put(`/assignments/${id}`);
-  // }
+  editAssignment(data: any): Observable<any> {
+    return this.apiSA.put(`/rendu`, data);
+  }
 
   deleteAssignment(id: string): Observable<any> {
     return this.apiSA.delete(`/assignments/${id}`);

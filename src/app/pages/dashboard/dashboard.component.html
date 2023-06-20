@@ -9,7 +9,7 @@
               <div class="row">
                 <div class="col">
                   <h5 class="card-title text-uppercase text-muted mb-0">Assignements</h5>
-                  <span class="h2 font-weight-bold mb-0">350,897</span>
+                  <span class="h2 font-weight-bold mb-0">{{totalAssignments}}</span>
                 </div>
                 <div class="col-auto">
                   <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
@@ -20,7 +20,7 @@
             </div>
           </div>
         </div>
-        <div class="col-xl-6 col-lg-6">
+        <!-- <div class="col-xl-6 col-lg-6">
           <div class="card card-stats mb-4 mb-xl-0">
             <div class="card-body">
               <div class="row">
@@ -36,7 +36,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -70,7 +70,6 @@
                 <th scope="col">Author</th>
                 <th scope="col">Subject</th>
                 <th scope="col">Note</th>
-                <th scope="col">Comments</th>
                 <th scope="col">Due</th>
                 <th scope="col">Due date</th>
                 <th scope="col"></th>
@@ -88,15 +87,24 @@
                     </div>
                   </div>
                 </th>
-                <td>{{assignment.auteur}}</td>
-                <td>{{assignment.matiere}}</td>
+                <td>
+                  <div class="media align-items-center">
+                    <span class="avatar avatar-sm rounded-circle border">
+                      <app-initial [username]="getAuthor(assignment)"></app-initial>
+                    </span>
+                  </div>
+                </td>
+                <td>
+                  <div class="media align-items-center">
+                    <a class="avatar rounded-circle mr-3">
+                      <img alt="Image placeholder" [src]="getSubject(assignment)" style="height:100%">
+                    </a>
+                  </div>
+                </td>
                 <td>
                   <span class="badge badge-dot mr-4">
                     <i class="bg-warning"></i> {{assignment.note}}
                   </span>
-                </td>
-                <td>
-                  {{assignment.remarques}}
                 </td>
                 <td>
                   <div *ngIf="assignment.rendu; else contentRendu">
@@ -113,7 +121,8 @@
                   <button class="btn btn-icon btn-1 btn-warning" type="button" (click)="editAssignment(assignment._id)">
                     <span class="btn-inner--icon"><i class="ni ni-ruler-pencil"></i></span>
                   </button>
-                  <button class="btn btn-icon btn-1 btn-danger" type="button" (click)="deleteAssignment(assignment._id)">
+                  <button class="btn btn-icon btn-1 btn-danger" type="button"
+                    (click)="deleteAssignment(assignment._id)">
                     <span class="btn-inner--icon"><i class="ni ni-basket"></i></span>
                   </button>
                 </td>
