@@ -15,8 +15,8 @@ export class AssignmentSA {
     return this.apiSA.get(`/assignments?page=${page}&limit=${limit}`);
   }
 
-  addAssignment(nom: string, dateDeRendu: Date, auteur: string, matiere: string, note: number, remarques: string): Observable<any> {
-    return this.apiSA.post(`/assignments`, { nom, dateDeRendu, auteur, matiere, note, remarques });
+  addAssignment(data: any): Observable<any> {
+    return this.apiSA.post(`/assignments`, data);
   }
 
   detailAssignment(id: string): Observable<any> {

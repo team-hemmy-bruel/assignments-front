@@ -36,7 +36,18 @@ export class AssignmentAddComponent implements OnInit {
 
   addAssignment() {
     this.loading = true;
-    this.assignmentSA.addAssignment(this.nom, this.dateDeRendu, this.auteur, this.matiere, this.note, this.remarques).subscribe(data => {
+    const assAdd = {
+      auteur: '648b1414d266bf40f84b6bdf',
+      matiere: '648b1576f0c99259a0f34990',
+      nom: 'd',
+      dateRendu: '2022-06-20',
+      note: 2,
+      remarques: 'remarques d'
+    };
+
+    // const etes = {this.nom, this.dateDeRendu, this.auteur, this.matiere, this.note, this.remarques};
+
+    this.assignmentSA.addAssignment(assAdd).subscribe(data => {
       console.log('this. data :>> ', data);
       this.router.navigate(['/dashboard']);
       this.loading = false;
