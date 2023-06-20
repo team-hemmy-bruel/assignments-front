@@ -49,7 +49,17 @@
         <div class="card-header border-0">
           <h3 class="mb-0" *ngIf="loading; else content">Assignements (loading ...)</h3>
           <ng-template #content>
-            <h3 class="mb-0">Assignements</h3>
+            <div class="row">
+              <div class="col-10">
+                <h3 class="mb-0">Assignements</h3>
+              </div>
+              <div class="col-2">
+                <button class="btn btn-icon btn-sm btn-primary" type="button" (click)="addAssignment()">
+                  Add assignment
+                  <span class="btn-inner--icon"><i class="ni ni-fat-add"></i></span>
+                </button>
+              </div>
+            </div>
           </ng-template>
         </div>
         <div class="table-responsive">

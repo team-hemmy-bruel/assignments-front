@@ -51,4 +51,8 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['/assignment-edit', {id}]);
   }
 
+  addAssignment(id: string) {
+    this.router.navigate(['/assignment-add']);
+  }
+
 }

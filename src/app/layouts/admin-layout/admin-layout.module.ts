@@ -12,6 +12,7 @@ import { UserProfileComponent } from '../../pages/user-profile/user-profile.comp
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { InitialComponent } from 'src/app/components/initial/initial.component';
 import { AssignmentEditComponent } from 'src/app/pages/assignemnent-edit/assignemnent-edit.component';
+import { AssignmentAddComponent } from 'src/app/pages/assignemnent-add/assignemnent-add.component';
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -28,6 +29,7 @@ import { AssignmentEditComponent } from 'src/app/pages/assignemnent-edit/assigne
     UserProfileComponent,
     InitialComponent,
     AssignmentEditComponent,
+    AssignmentAddComponent,
   ]
 })
 
