@@ -51,6 +51,13 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['/assignment-edit', {id}]);
   }
 
+  deleteAssignment(id: string) {
+    this.assignmentSA.deleteAssignment(id).subscribe(data => {
+      console.log('Assignement deleted:>> ', data);
+      this.getAssignment();
+    })
+  }
+
   addAssignment(id: string) {
     this.router.navigate(['/assignment-add']);
   }
