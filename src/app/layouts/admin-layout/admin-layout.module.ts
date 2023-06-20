@@ -11,6 +11,7 @@ import { DashboardComponent } from '../../pages/dashboard/dashboard.component';
 import { UserProfileComponent } from '../../pages/user-profile/user-profile.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { InitialComponent } from 'src/app/components/initial/initial.component';
+import { AssignmentEditComponent } from 'src/app/pages/assignemnent-edit/assignemnent-edit.component';
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -26,6 +27,7 @@ import { InitialComponent } from 'src/app/components/initial/initial.component';
     DashboardComponent,
     UserProfileComponent,
     InitialComponent,
+    AssignmentEditComponent,
   ]
 })
 

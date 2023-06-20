@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  // apiBaseUrl: 'https://assignments-back-2x4k.onrender.com/api',
-  apiBaseUrl: 'http://localhost:8010/api',
+  apiBaseUrl: 'https://assignments-back-2x4k.onrender.com/api',
+  // apiBaseUrl: 'http://localhost:8010/api',
 };
 
 /*

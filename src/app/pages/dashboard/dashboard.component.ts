@@ -48,7 +48,7 @@ export class DashboardComponent implements OnInit {
   }
 
   editAssignment(id: string) {
-    this.router.navigate(['/user-profile', {id}]);
+    this.router.navigate(['/assignment-edit', {id}]);
   }
 
 }
